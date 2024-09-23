@@ -9,7 +9,7 @@ public class Bug {
     private int width;
     private int height;
     private Integer state;
-    private Map<Integer, List<Integer>> coords;
+    private final Map<Integer, List<Integer>> coords;
 
     public Bug(int x, int y, int width, int height, Integer state) {
         this.cx = x;
@@ -33,7 +33,6 @@ public class Bug {
             state = state == 3 ? 0 : state + 1;
             this.cx = coords.get(state).get(0);
             this.cy = coords.get(state).get(1);
-            System.out.println(state);
         }
         switch (this.state) {
             case (0) -> this.cx += 31;
@@ -52,7 +51,6 @@ public class Bug {
             state = state == 3 ? 0 : state + 1;
             this.cx = coords.get(state).get(0);
             this.cy = coords.get(state).get(1);
-            System.out.println(state);
         }
         switch (this.state) {
             case (0) -> this.cy -= 8;
@@ -85,7 +83,7 @@ public class Bug {
         g.setColor(new Color(36, 33, 31));
         g.fillOval((int) (this.cx + 0.3 * this.width), (int) (this.cy - 0.5 * this.height), this.width, (int) (this.height * 0.8));
         g.setColor(new Color(255, 255, 255));
-        g.fillOval((int) (this.cx + this.width), this.cy - this.height / 2, this.width / 4, this.height / 4);
+        g.fillOval((this.cx + this.width), this.cy - this.height / 2, this.width / 4, this.height / 4);
 
     }
 }
